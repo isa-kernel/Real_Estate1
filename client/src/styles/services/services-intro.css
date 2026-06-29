@@ -1,0 +1,12 @@
+.services-intro{
+    padding:100px 10%;
+    background:#fff;
+}
+
+@media(max-width:768px){
+
+    .services-intro{
+        padding:70px 20px;
+    }
+
+}

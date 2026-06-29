@@ -1,0 +1,346 @@
+/* ===========================
+   GOOGLE FONTS
+=========================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap");
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    transition:.4s ease;
+
+    padding:18px 0;
+
+    background:transparent;
+
+}
+
+.navbar.scrolled{
+
+    background:rgba(17,24,39,.95);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 6px 20px rgba(0,0,0,.15);
+
+    padding:14px 0;
+
+}
+
+.nav-container{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.logo{
+
+    text-decoration:none;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.logo span{
+
+    color:#D4AF37;
+
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:.97rem;
+
+    font-weight:500;
+
+    transition:.3s;
+
+    position:relative;
+
+}
+
+/* underline animation */
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:#D4AF37;
+
+    transition:.35s;
+
+}
+
+.nav-links a:hover::after,
+
+.nav-links a.active::after{
+
+    width:100%;
+
+}
+
+.nav-links a:hover{
+
+    color:#D4AF37;
+
+}
+
+/* ===========================
+   LOGIN BUTTON
+=========================== */
+
+.login-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 18px;
+
+    border:2px solid #D4AF37;
+
+    border-radius:40px;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:#D4AF37;
+
+    color:#111827 !important;
+
+}
+
+/* ===========================
+   MOBILE BUTTON
+=========================== */
+
+.menu-btn{
+
+    display:none;
+
+    border:none;
+
+    background:none;
+
+    color:#fff;
+
+    font-size:1.8rem;
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+
+    background:#111827;
+
+    color:white;
+
+    padding:70px 20px;
+
+    margin-top:100px;
+
+}
+
+.footer-content{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.footer h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}
+
+.footer h2 span{
+
+    color:#D4AF37;
+
+}
+
+.footer p{
+
+    color:#cbd5e1;
+
+    margin-top:10px;
+
+    font-family:"Poppins",sans-serif;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+.nav-links{
+
+    position:fixed;
+
+    top:0;
+
+    right:-100%;
+
+    width:280px;
+
+    height:100vh;
+
+    background:#111827;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:35px;
+
+    transition:.4s;
+
+    box-shadow:-8px 0 30px rgba(0,0,0,.3);
+
+}
+
+.nav-links.active{
+
+    right:0;
+
+}
+
+.menu-btn{
+
+    display:block;
+
+}
+
+}
+
+.admin-menu{
+    position:relative;
+}
+
+.admin-btn{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    background:none;
+    border:none;
+    color: white;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    
+}
+
+.admin-dropdown{
+    position:absolute;
+    top:115%;
+    right:0;
+    width:220px;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+    overflow:hidden;
+    z-index:999;
+}
+
+.admin-dropdown a,
+.admin-dropdown button{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:.8rem;
+    padding:14px 18px;
+    text-decoration:none;
+    color:#970909;
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.admin-dropdown a:hover,
+.admin-dropdown button:hover{
+    background:#f4f4f4;
+}

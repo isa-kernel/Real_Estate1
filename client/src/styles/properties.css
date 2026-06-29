@@ -1,0 +1,47 @@
+.properties-page{
+
+padding:
+
+140px 8%
+
+80px;
+
+background:#f8fafc;
+
+min-height:100vh;
+
+}
+
+.container{
+
+max-width:1300px;
+
+margin:auto;
+
+}
+
+.properties-page h1{
+
+font-size:3rem;
+
+font-family:
+
+"Playfair Display",
+
+serif;
+
+margin-bottom:15px;
+
+color:#111827;
+
+}
+
+.properties-page p{
+
+margin-bottom:40px;
+
+color:#6b7280;
+
+font-size:1.05rem;
+
+}
