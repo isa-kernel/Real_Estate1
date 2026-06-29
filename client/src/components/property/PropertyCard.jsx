@@ -6,7 +6,7 @@ import {
   FaMapMarkerAlt
 } from "react-icons/fa";
 
-import "../../styles/propertyCard.css";
+import "../../styles/propertycard.css";
 
 function PropertyCard({ property }) {
 
