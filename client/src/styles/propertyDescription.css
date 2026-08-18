@@ -1,59 +1,27 @@
-.property-description{
-
-background:#fff;
-
-padding:35px;
-
-border-radius:18px;
-
-box-shadow:0 8px 25px rgba(0,0,0,.08);
-
-margin:40px 0;
-
+.property-description {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.property-description h2{
-
-font-size:1.6rem;
-
-margin-bottom:20px;
-
-color:#111827;
-
+.property-description h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
 }
 
-.property-description p{
-
-line-height:1.9;
-
-font-size:1.05rem;
-
-color:#4b5563;
-
-white-space:pre-line;
-
+.property-description p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  margin: 0;
 }
 
-.no-description{
-
-color:#9ca3af;
-
-font-style:italic;
-
-}
-
-@media(max-width:768px){
-
-.property-description{
-
-padding:25px;
-
-}
-
-.property-description h2{
-
-font-size:1.35rem;
-
-}
-
+.property-description .no-description {
+  color: #999;
+  font-style: italic;
 }

@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Register from "./pages/Register";
 
 import ManageProperties from "./pages/ManageProperties";
 import ManageLands from "./pages/ManageLands";
@@ -92,6 +93,11 @@ function App() {
         <Route
           path="/login"
           element={<Login />}
+        />
+
+        <Route
+          path="/register"
+          element={<Register />}
         />
 
         {/* ========= ADMIN ========= */}

@@ -1,171 +1,109 @@
-import {
-useState,
-useContext
-}
-from "react";
-
-import {
-useNavigate
-}
-from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaArrowRight, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 import API from "../services/api";
+import { AuthContext } from "../context/AuthContext";
+import Spinner from "../components/common/Spinner";
+import "../styles/auth.css";
 
-import {
-AuthContext
-}
-from "../context/AuthContext";
-import Spinner
-from "../components/common/Spinner";
+function Login() {
+  const navigate = useNavigate();
+  const { setToken } = useContext(AuthContext);
 
-function Login(){
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
+  const [ showPassword, setShowPassword ] = useState(false);
+  const [ loading, setLoading ] = useState(false);
+  const [ error, setError ] = useState("");
 
-const navigate =
-useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setError("");
+    setLoading(true);
 
-const {
-setToken
-}
-=
-useContext(AuthContext);
+    try {
+      const response = await API.post("/auth/login", { email, password });
 
-const [email,setEmail]
-=
-useState("");
+      localStorage.setItem("token", response.data.token);
+      setToken(response.data.token);
+      navigate("/dashboard");
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+        "We could not sign you in. Check your email and password."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
-const [password,setPassword]
-=
-useState("");
+  return (
+    <main className="auth-page">
+      <section className="auth-card">
+        <div className="auth-icon">
+          <FaLock />
+        </div>
 
-const [loading,setLoading]
-=
-useState(false);
+        <p className="auth-eyebrow">ADMIN PORTAL</p>
+        <h1>Welcome back.</h1>
+        <p className="auth-intro">
+          Sign in to manage properties, inquiries, and your agency profile.
+        </p>
 
-const [error,setError]
-=
-useState("");
+        {error && (
+          <p className="auth-message error" role="alert">
+            {error}
+          </p>
+        )}
 
-const handleSubmit =
-async(e)=>{
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <label>
+            Email address
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              autoComplete="email"
+              required
+            />
+          </label>
 
-e.preventDefault();
+          <label>
+            Password
+            <div className="password-field">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                autoComplete="current-password"
+                required
+              />
 
-setLoading(true);
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword((current) => !current)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+              </button>
+            </div>
+          </label>
 
-setError("");
+          <button className="auth-submit" type="submit" disabled={loading}>
+            {loading ? <Spinner /> : <>Sign in <FaArrowRight /></>}
+          </button>
+        </form>
 
-try{
-
-const response =
-await API.post(
-"/auth/login",
-{
-email,
-password
-}
-);
-
-localStorage.setItem(
-"token",
-response.data.token
-);
-
-setToken(
-response.data.token
-);
-
-navigate(
-"/dashboard"
-);
-
-}
-catch(error){
-
-setError(
-"Invalid credentials"
-);
-
-}
-finally{
-
-setLoading(false);
-
-}
-
-};
-
-return(
-
-<div className="login-page">
-
-<form
-onSubmit={handleSubmit}
->
-
-<h2>
-Admin Login
-</h2>
-
-{error &&
-
-<p>
-{error}
-</p>
-
-}
-
-<input
-
-type="email"
-
-placeholder="Email"
-
-value={email}
-
-onChange={(e)=>
-setEmail(
-e.target.value
-)
-}
-
-/>
-
-<input
-
-type="password"
-
-placeholder="Password"
-
-value={password}
-
-onChange={(e)=>
-setPassword(
-e.target.value
-)
-}
-
-/>
-
-<button
-disabled={loading}
->
-
-{
-loading
-?
-<Spinner/>
-:
-"Login"
-}
-
-</button>
-
-</form>
-
-</div>
-
-);
-
+        <p className="auth-switch">
+          Don&apos;t have an account? <Link to="/register">Create one</Link>
+        </p>
+      </section>
+    </main>
+  );
 }
 
 export default Login;
